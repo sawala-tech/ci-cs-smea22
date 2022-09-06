@@ -46,19 +46,18 @@
         border-color: #C8A27A
       }
       .btn-primary:hover{
-        background-color: #C8A27A;
-        border-color: #C8A27A
+        background-color: #C8A27ADD;
+        border-color: #C8A27ADD
       }
       .border{
         --bs-border-color: #F3F4F6
       }
-      .img-card:hover{
+      .img-card{
         position: relative;
       }
-      .img-card:hover:before{
-        content: 'See Description';
+      .img-card .hover{
         color: white;
-        display: flex;
+        display: none;
         justify-content: center;
         align-items:center;
         position: absolute;
@@ -67,6 +66,10 @@
         left:0;
         right:0;
         background-color: #3334;
+      }
+      .img-card:hover .hover{
+        display: flex;
+        gap: .5rem
       }
       .nav-link:focus, .nav-link:hover {
         --bs-nav-link-hover-color: #C8A27A
@@ -131,18 +134,36 @@
           <div class="col-4">
             <div class="img-card">
               <img width="100%" src="<?php echo base_url('resources/img/coffee 1.png'); ?>">
+              <div class="hover">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 9H1M9 1V17V1Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>See Description<span>
+              </div>
             </div>
             <div class="py-3 text-center"> Luwak Coffe</div>
           </div>
           <div class="col-4">
             <div class="img-card">
               <img width="100%" src="<?php echo base_url('resources/img/coffee 2.png'); ?>">
+              <div class="hover">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 9H1M9 1V17V1Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>See Description<span>
+              </div>
             </div>
             <div class="py-3 text-center">Caramel Latte</div>
           </div>
           <div class="col-4">
             <div class="img-card">
               <img width="100%" src="<?php echo base_url('resources/img/coffee 3.png'); ?>">
+              <div class="hover">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 9H1M9 1V17V1Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>See Description<span>
+              </div>
             </div>
             <div class="py-3 text-center"> Cappucino</div>
           </div>
