@@ -52,6 +52,25 @@
       .border{
         --bs-border-color: #F3F4F6
       }
+      .img-card:hover{
+        position: relative;
+      }
+      .img-card:hover:before{
+        content: 'See Description';
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        position: absolute;
+        top: 0;
+        bottom:0;
+        left:0;
+        right:0;
+        background-color: #3334;
+      }
+      .nav-link:focus, .nav-link:hover {
+        --bs-nav-link-hover-color: #C8A27A
+      }
     </style>
   </head>
   <body>
@@ -64,11 +83,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav mx-auto">
-            <a class="nav-link active" aria-current="page" href="#">About</a>
-            <a class="nav-link" href="#">Our Coffee</a>
-            <a class="nav-link" href="#">Instagram</a>
-            <a class="nav-link">Location</a>
-            <a class="nav-link">Gallery</a>
+            <a class="nav-link" aria-current="page" href="#about">About</a>
+            <a class="nav-link" href="#our-coffee">Our Coffee</a>
+            <a class="nav-link" href="#instagram">Instagram</a>
+            <a class="nav-link" href="#location">Location</a>
+            <a class="nav-link" href="#gallery">Gallery</a>
           </div>
         </div>
         <div class="position-absolute d-flex align-items-center" style="right:0; top: 0; bottom:0">
@@ -88,7 +107,7 @@
     </header>
     
     <!-- About -->
-    <section style="background-color:#F3F4F6; margin-top:-80px; padding-top: 80px">
+    <section id="about" style="background-color:#F3F4F6; margin-top:-80px; padding-top: 80px">
       <div class="container py-4">
         <div class="row">
           <div class="col-6 d-flex justify-content-center">
@@ -105,21 +124,27 @@
     </section>
 
     <!-- Our Coffe -->
-    <section>
+    <section id="our-coffee">
       <div class="container py-5">
         <h1 class="text-center mb-5">Our Coffee</h1>
         <div class="row mb-5" style="--bs-gutter-x: 4rem">
           <div class="col-4">
+            <div class="img-card">
               <img width="100%" src="<?php echo base_url('resources/img/coffee 1.png'); ?>">
-              <div class="py-3 text-center"> Luwak Coffe</div>
+            </div>
+            <div class="py-3 text-center"> Luwak Coffe</div>
           </div>
           <div class="col-4">
+            <div class="img-card">
               <img width="100%" src="<?php echo base_url('resources/img/coffee 2.png'); ?>">
-              <div class="py-3 text-center"> Caramel Latte</div>
+            </div>
+            <div class="py-3 text-center">Caramel Latte</div>
           </div>
           <div class="col-4">
+            <div class="img-card">
               <img width="100%" src="<?php echo base_url('resources/img/coffee 3.png'); ?>">
-              <div class="py-3 text-center"> Cappucino</div>
+            </div>
+            <div class="py-3 text-center"> Cappucino</div>
           </div>
         </div>
         <div class="text-center">
@@ -129,10 +154,10 @@
     </section>
 
     <!-- Instagram -->
-    <section style="background-color:#F3F4F6;">
+    <section id="instagram" style="background-color:#F3F4F6;">
       <div class="container py-5">
         <div class="row mb-5" style="--bs-gutter-x: 2rem; --bs-gutter-y: 2rem">
-          <div class="col-4 d-flex justify-content-center align-items-center">
+          <div class="col-4 d-flex align-items-center">
             <div>
               <h2>Lets check our <br> Instagram account</h2>
               <span class="text-gray">
@@ -161,7 +186,7 @@
     </section>
 
     <!-- Location -->
-    <section>
+    <section id="location">
       <div class="container py-5">
         <div class="row border p-5" style="--bs-border-width: 7px; --bs-gutter-x: 2rem;">
           <div class="col-6 d-flex justify-content-center">
@@ -190,7 +215,7 @@
     </section>
 
     <!-- Gallery -->
-    <section>
+    <section id="gallery">
       <div class="row" style="--bs-gutter-x: 0rem;">
         <div class="col-4">
           <img width="100%" src="<?php echo base_url('resources/img/gallery 1.png'); ?>">
