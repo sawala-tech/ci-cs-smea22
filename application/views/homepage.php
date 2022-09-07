@@ -74,13 +74,21 @@
       .nav-link:focus, .nav-link:hover {
         --bs-nav-link-hover-color: #C8A27A
       }
+      .title-website{
+        color: #C8A27A;
+        padding-left: .5rem;
+        font-size: 2rem;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white sticky-top">
       <div class="container position-relative py-2">
-        <a class="navbar-brand position-absolute" href="#"><img id="logo" src="<?php echo base_url('resources/img/logo.png');?>" height="55px"><span id="title"></span></a>
+        <a class="navbar-brand position-absolute d-flex align-items-center" href="#">
+          <img id="logo" src="" height="55px">
+          <span id="title" class="title-website"></span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -113,7 +121,7 @@
           <div class="col-6 col-6 d-flex justify-content-center align-items-center">
             <div>
               <div id="about-description"></div>
-              <button class="btn btn-primary rounded-0 mt-3" type="button">READ MORE</button>
+              <button  id="about-button" class="btn btn-primary rounded-0 mt-3" type="button"></button>
             </div>
           </div>
         </div>
@@ -128,7 +136,7 @@
           <!--Data load With Ajax-->
         </div>
         <div class="text-center">
-          <a class="btn btn-primary rounded-0 mt-3">ALL MENU</a>
+          <button class="btn btn-primary rounded-0 mt-3" onclick="moreCoffee(this)">ALL MENU</button>
         </div>
       </div>
     </section>
@@ -220,7 +228,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
       //Get Data Our Coffee
-      $.get("https://core-kopiku.sawala.dev/api/coffees?populate=*", function(data, status){
+      $.get("https://core-kopiku.sawala.dev/api/coffees?populate=*&&pagination[limit]=3", function(data, status){
       let dataHtml = '';
 
       data.data.map((e)=>{
@@ -241,6 +249,30 @@
 
       $("#coffee-data").html(dataHtml)
     });
+    function moreCoffee(element){
+      $(element).hide()
+      $.get("https://core-kopiku.sawala.dev/api/coffees?populate=*&&pagination[limit]=-1", function(data, status){
+        let dataHtml = '';
+
+        data.data.map((e)=>{
+          dataHtml += `
+          <div class="col-4">
+            <div class="img-card">
+              <img width="100%" src="${e.attributes.picture.data.attributes.url}">
+              <div class="hover">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 9H1M9 1V17V1Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>See Description<span>
+              </div>
+            </div>
+            <div class="py-3 text-center"> ${e.attributes.name} </div>
+          </div>`
+        })
+
+        $("#coffee-data").html(dataHtml)
+      });
+    }
 
     //Get Data Gallery
     $.get("https://core-kopiku.sawala.dev/api/galleries?populate=*", function(data, status){
@@ -276,8 +308,10 @@
       $("#hero-img").attr('src', data.data.attributes.banner.data.attributes.url)
 
       $("#about-description").html(data.data.attributes.description)
+      $("#about-button").html(data.data.attributes.button_text)
       $("#about-img").attr('src', data.data.attributes.picture.data.attributes.url)
     });
+
     //Get Data Setting
     $.get("https://core-kopiku.sawala.dev/api/setting?populate=*", function(data, status){
       let dataMenu = '';
