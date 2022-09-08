@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Kopiku - SAWALA TECH</title>
     <link href="<?=base_url()?>resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       :root {
@@ -103,7 +103,7 @@
 
     <!-- hero -->
     <header class="container pt-5">
-      <h1 class="mb-5 fw-bolder text-uppercase text-center">Boost your day with <br> a cup of coffee</h1>
+      <h1 class="mb-5 fw-bolder text-uppercase text-center">Andri Junaedi, <br> a cup of coffee</h1>
       <div class="d-flex justify-content-center">
         <img src="<?php echo base_url('resources/img/hero2.png');?>">
       </div>
