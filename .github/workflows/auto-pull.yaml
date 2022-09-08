@@ -1,0 +1,27 @@
+name: PHP Auto Deployment Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pull-repository:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get branch name
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+
+      - name: Pull latest branch master
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script_stop: true
+          script: |
+            cd public_html
+            git pull origin $BRANCH_NAME
