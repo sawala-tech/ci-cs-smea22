@@ -103,7 +103,7 @@
 
     <!-- hero -->
     <header class="container pt-5">
-      <h1 class="mb-5 fw-bolder text-uppercase text-center">Sawala Technology, <br> a cup of coffee</h1>
+      <h1 class="mb-5 fw-bolder text-uppercase text-center">Hallo Dunia, <br> a cup of coffee</h1>
       <div class="d-flex justify-content-center">
         <img src="<?php echo base_url('resources/img/hero2.png');?>">
       </div>
